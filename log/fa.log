@@ -1,0 +1,44 @@
+2016-05-18 11:05:56,723 - FrameworkServlet 'FusionSpringServlet': initialization started
+2016-05-18 11:05:56,742 - Refreshing WebApplicationContext for namespace 'FusionSpringServlet-servlet': startup date [Wed May 18 11:05:56 CST 2016]; root of context hierarchy
+2016-05-18 11:05:56,775 - Loading XML bean definitions from ServletContext resource [/WEB-INF/config/spring-beans-config.xml]
+2016-05-18 11:05:56,877 - Loading XML bean definitions from ServletContext resource [/WEB-INF/config/spring-hibernate-integration.xml]
+2016-05-18 11:05:56,954 - Loading XML bean definitions from ServletContext resource [/WEB-INF/config/spring-mapping-config.xml]
+2016-05-18 11:05:56,978 - Loading XML bean definitions from ServletContext resource [/WEB-INF/config/spring-mvc-config.xml]
+2016-05-18 11:05:57,237 - Loading properties file from class path resource [mysql.properties]
+2016-05-18 11:05:57,397 - Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-05-18 11:05:57,595 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-05-18 11:05:57,600 - HHH000412: Hibernate Core {4.3.11.Final}
+2016-05-18 11:05:57,602 - HHH000206: hibernate.properties not found
+2016-05-18 11:05:57,604 - HHH000021: Bytecode provider name : javassist
+2016-05-18 11:05:58,047 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-05-18 11:05:58,185 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-05-18 11:05:58,190 - HHH000397: Using ASTQueryTranslatorFactory
+2016-05-18 11:05:58,409 - HHH000228: Running hbm2ddl schema update
+2016-05-18 11:05:58,410 - HHH000102: Fetching database metadata
+2016-05-18 11:05:58,453 - HHH000396: Updating schema
+2016-05-18 11:05:58,488 - HHH000261: Table found: fusion.fd_message
+2016-05-18 11:05:58,489 - HHH000037: Columns: [mes_time, mes_sub_id, mes_type, id, mes_if_del]
+2016-05-18 11:05:58,490 - HHH000108: Foreign keys: []
+2016-05-18 11:05:58,491 - HHH000126: Indexes: [primary]
+2016-05-18 11:05:58,515 - HHH000261: Table found: fusion.fd_msg_emoji
+2016-05-18 11:05:58,516 - HHH000037: Columns: [emj_code, id]
+2016-05-18 11:05:58,516 - HHH000108: Foreign keys: []
+2016-05-18 11:05:58,517 - HHH000126: Indexes: [primary]
+2016-05-18 11:05:58,552 - HHH000261: Table found: fusion.fd_msg_file
+2016-05-18 11:05:58,553 - HHH000037: Columns: [fil_relativepath, fil_filename, id, fil_path]
+2016-05-18 11:05:58,553 - HHH000108: Foreign keys: []
+2016-05-18 11:05:58,554 - HHH000126: Indexes: [primary]
+2016-05-18 11:05:58,576 - HHH000261: Table found: fusion.fd_msg_plaintext
+2016-05-18 11:05:58,578 - HHH000037: Columns: [id, ptx_content]
+2016-05-18 11:05:58,581 - HHH000108: Foreign keys: []
+2016-05-18 11:05:58,583 - HHH000126: Indexes: [primary]
+2016-05-18 11:05:58,584 - HHH000232: Schema update complete
+2016-05-18 11:05:58,639 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@56382bc9] of Hibernate SessionFactory for HibernateTransactionManager
+2016-05-18 11:05:58,871 - Mapped "{[/im/addText]}" onto public org.springframework.web.servlet.ModelAndView com.ericsson.fusionany.im.controller.IMController.addText(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-05-18 11:05:58,876 - Mapped "{[/im/addEmoji]}" onto public org.springframework.web.servlet.ModelAndView com.ericsson.fusionany.im.controller.IMController.addEmoji(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-05-18 11:05:58,878 - Mapped "{[/im/addFile]}" onto public org.springframework.web.servlet.ModelAndView com.ericsson.fusionany.im.controller.IMController.addFile(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-05-18 11:05:58,880 - Mapped "{[/im/index]}" onto public org.springframework.web.servlet.ModelAndView com.ericsson.fusionany.im.controller.IMController.index()
+2016-05-18 11:05:59,276 - Looking for @ControllerAdvice: WebApplicationContext for namespace 'FusionSpringServlet-servlet': startup date [Wed May 18 11:05:56 CST 2016]; root of context hierarchy
+2016-05-18 11:05:59,331 - Looking for @ControllerAdvice: WebApplicationContext for namespace 'FusionSpringServlet-servlet': startup date [Wed May 18 11:05:56 CST 2016]; root of context hierarchy
+2016-05-18 11:05:59,444 - Looking for @ControllerAdvice: WebApplicationContext for namespace 'FusionSpringServlet-servlet': startup date [Wed May 18 11:05:56 CST 2016]; root of context hierarchy
+2016-05-18 11:05:59,516 - FrameworkServlet 'FusionSpringServlet': initialization completed in 2788 ms

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @fusionany" uuid="59e37d1e-bd81-497b-89a5-7c49e263a280">
+    <database-info product="MySQL" version="5.7.12" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="fusion"/>
+      <table id="2" parent="1" name="fd_message">
+        <comment>fusionDemo 消息主表</comment>
+      </table>
+      <table id="3" parent="1" name="fd_msg_emoji">
+        <comment>表情信息表</comment>
+      </table>
+      <table id="4" parent="1" name="fd_msg_file">
+        <comment>附件信息表</comment>
+      </table>
+      <table id="5" parent="1" name="fd_msg_plaintext">
+        <comment>文本消息表</comment>
+      </table>
+      <column id="6" parent="2" name="id">
+        <comment>消息表主键</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="7" parent="2" name="mes_type">
+        <comment>消息类型:[1:文本][2:附件][3:表情]</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="8" parent="2" name="mes_time">
+        <comment>消息发送时间</comment>
+        <data-type>timestamp(6)</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP(6)&apos;</default-expression>
+      </column>
+      <column id="9" parent="2" name="mes_sub_id">
+        <comment>消息子表id
+</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="10" parent="2" name="mes_if_del">
+        <comment>删除标记</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="11" parent="2" name="PRIMARY">
+        <columns>id
+mes_if_del</columns>
+        <primary>1</primary>
+      </key>
+      <column id="12" parent="3" name="id">
+        <comment>表情表主键</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="13" parent="3" name="emj_code">
+        <comment>表情代码</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="14" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="16" parent="4" name="fil_filename">
+        <comment>附件文件名</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="17" parent="4" name="fil_relativepath">
+        <comment>文件相对项目路径</comment>
+        <data-type>varchar(500)</data-type>
+      </column>
+      <key id="18" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="19" parent="5" name="id">
+        <comment>主键id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="20" parent="5" name="ptx_content">
+        <comment>纯文本消息内容
+</comment>
+        <data-type>varchar(500)</data-type>
+      </column>
+      <key id="21" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

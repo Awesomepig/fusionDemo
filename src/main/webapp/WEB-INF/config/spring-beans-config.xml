@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- beans for controller -->
+<!--    &lt;!&ndash; contact controller for android &ndash;&gt;
+    <bean id="androidContactController" class="com.ericsson.otech.contacts.controller.AndroidContactController">
+        <property name="contactService" ref="contactManageService"></property>
+    </bean>
+
+
+    &lt;!&ndash; beans for services &ndash;&gt;
+
+    <bean id="contactManageService" class="com.ericsson.otech.contacts.service.impl.ContactManageServiceImpl">
+        <property name="searchService" ref="ldapSearch"></property>
+    </bean>
+    <bean id="ldapSearch" class="com.ericsson.component.ldap.access.LDAPSearch">
+        <description>默认ldap服务器的查询服务</description>
+    </bean>-->
+</beans>

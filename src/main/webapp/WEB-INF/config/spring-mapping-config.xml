@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >
+            <property name="mappings">
+                <props>
+                    <prop key="contact/queryAllMembers.htm">androidContactController</prop>
+                    &lt;!&ndash;<prop key="contact/delete.htm">androidContactController</prop>&ndash;&gt;
+                    &lt;!&ndash;<prop key="contact/update.htm">androidContactController</prop>&ndash;&gt;
+                    &lt;!&ndash;<prop key="contact/add.htm">androidContactController</prop>&ndash;&gt;
+                </props>
+            </property>
+        </bean>-->
+
+</beans>
