@@ -8,6 +8,29 @@
     <!--<listener>-->
         <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
     <!--</listener>-->
+    
+    <!-- spring web root path -->
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>webapp.dir</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+    </listener>
+    <!-- 字符过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- spring dispatcher servlet -->
     <servlet>
         <servlet-name>FusionSpringServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -22,6 +45,6 @@
         <url-pattern>*.htm</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>/im/index.htm</welcome-file>
+        <welcome-file>im/index.htm</welcome-file>
     </welcome-file-list>
 </web-app>

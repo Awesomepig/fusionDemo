@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class IMDaoImpl implements IMDao{
 
 
     @Override
-    public <T> List<T> queryForList(Class<? extends T> t,int startPosition,int total,Criterion... criterions) {
+    public <T> List<T> queryForList(Class<? extends T> t,int startPosition,int total,Order order,Criterion... criterions) {
         // 1.create session
         Session session = sessionFactory.openSession();
         // 2.create criteria query
@@ -37,6 +38,9 @@ public class IMDaoImpl implements IMDao{
         }
         criteria.setFirstResult(startPosition);
         criteria.setMaxResults(total);
+        if (null!=order){
+            criteria.addOrder(order);
+        }
         // 3.get result
         List<T> result = criteria.list();
         // 4.close session

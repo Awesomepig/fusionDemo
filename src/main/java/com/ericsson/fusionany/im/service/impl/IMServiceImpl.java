@@ -10,6 +10,7 @@ import com.ericsson.fusionany.im.service.IMService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,27 +28,33 @@ public class IMServiceImpl implements IMService{
     public IMDao imDao;
 
     @Override
-    public JSONArray getMessageList(int start, int total, MessageType type) {
+    public JSONArray getMessageList(int start, int total,boolean ifDel, MessageType type) {
         Criterion[] criterions = null;
         List<Criterion> crList = new ArrayList<>();
+        if(ifDel){
+            crList.add(Restrictions.eq("ifDel",1));
+        }else{
+            crList.add(Restrictions.eq("ifDel",0));
+        }
+
         switch (type){
             case TEXT:
-                crList.add(Restrictions.eq("mes_type",1));
+                crList.add(Restrictions.eq("type",1));
             case EMOJI:
-                crList.add(Restrictions.eq("mes_type",2));
+                crList.add(Restrictions.eq("type",2));
             case FILE:
-                crList.add(Restrictions.eq("mes_type",3));
+                crList.add(Restrictions.eq("type",3));
         }
 
         List<Message> mesList = null;
         if (crList.size()<1){
-            mesList = imDao.queryForList(Message.class,start,total, new Criterion[]{});
+            mesList = imDao.queryForList(Message.class,start,total,Order.desc("date"), new Criterion[]{});
         }else{
             criterions = new Criterion[crList.size()];
             for (int i=0;i<crList.size();i++){
                 criterions[i] = crList.get(i);
             }
-            mesList = imDao.queryForList(Message.class,start,total,criterions);
+            mesList = imDao.queryForList(Message.class,start,total,Order.desc("date"),criterions);
         }
         if (null == mesList){
             return new JSONArray();

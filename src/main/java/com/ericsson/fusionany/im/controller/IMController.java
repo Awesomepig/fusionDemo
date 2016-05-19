@@ -3,19 +3,16 @@ package com.ericsson.fusionany.im.controller;
 import com.ericsson.fusionany.im.enmu.MessageType;
 import com.ericsson.fusionany.im.service.FileService;
 import com.ericsson.fusionany.im.service.IMService;
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,10 +37,22 @@ public class IMController {
     public FileService fileService;
 
     //===========================local-method=================
+
+    /**
+     * way to default index page
+     * @return
+     */
     @RequestMapping("/im/index")
     public ModelAndView index(){
         return new ModelAndView("/im/index");
     }
+
+    /**
+     * add text message
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/im/addText")
     public ModelAndView addText(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mav = new ModelAndView("im/index");
@@ -57,6 +66,13 @@ public class IMController {
         }
         return mav;
     }
+
+    /**
+     * add emoji message
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/im/addEmoji")
     public ModelAndView addEmoji(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mav = new ModelAndView("im/index");
@@ -79,6 +95,13 @@ public class IMController {
         }
         return mav;
     }
+
+    /**
+     * add file message
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/im/addFile")
     public ModelAndView addFile(HttpServletRequest request, HttpServletResponse response){
         String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
@@ -133,6 +156,17 @@ public class IMController {
         return mav;
     }
 
+    /**
+     * query for message list
+     * @param request parameters :
+     *                <ul>
+     *                <li>startPosition : result's start position from all message list,default 0 </li>
+     *                <li>total : the result length,default 10</li>
+     *                </ul>
+     *                any parameters with Non-numeric characters or negative number will be reset to default value
+     * @param response
+     * @return json Object
+     */
     @RequestMapping("/im/messageList.htm")
     public
     @ResponseBody
@@ -146,16 +180,16 @@ public class IMController {
          * 获取并设置参数
          */
         String startStr = request.getParameter("startPosition");
-        if (!StringUtils.isEmpty(startStr) && startStr.matches("/^\\d{1,}$/") ) {
+        if (!StringUtils.isEmpty(startStr) && startStr.matches("/^\\d+$/") ) {
             start = Integer.valueOf(startStr);
         }
         String totalStr = request.getParameter("total");
-        if (!StringUtils.isEmpty(totalStr) && totalStr.matches("/^\\d{1,}$/") ) {
+        if (!StringUtils.isEmpty(totalStr) && totalStr.matches("/^\\d+$/") ) {
             total = Integer.valueOf(totalStr);
         }
 
 
-        JSONArray res = imService.getMessageList(start, total, mesType);
+        JSONArray res = imService.getMessageList(start, total,false, mesType);
         return res.toString();
     }
     //==========================get-set==========================

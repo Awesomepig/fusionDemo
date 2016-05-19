@@ -14,7 +14,9 @@ public class FileServiceImpl implements FileService{
     public File createFile(InputStream in,String originName) throws FileNotFoundException {
         File file = null;
         byte[] buffer = new byte[1024];
-        String filePath = "/home/eric/Space/Idea_space/fusionDemo/src/main/webapp/resources/file/"+originName;
+        String rootPath = System.getProperty("webapp.dir");
+//        String filePath = "/home/eric/Space/Idea_space/fusionDemo/src/main/webapp/resources/file/"+originName;
+        String filePath = rootPath+"/resources/file/"+originName;
         FileOutputStream fou = new FileOutputStream(new File(filePath));
         int count = 0;
         try {
